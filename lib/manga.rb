@@ -6,9 +6,11 @@ module Mangaru
   class Manga
 
     def list
+      []
     end
 
     def chapter name
+      Mangaru::Chapter.new
     end
 
   end

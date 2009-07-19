@@ -13,6 +13,7 @@ module Mangaru
     end
   
     def manga name
+      Mangaru::Manga.new
     end
   
   end

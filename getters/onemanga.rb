@@ -12,18 +12,22 @@ module Mangaru
   class OneManga < Getter
 
     def initialize
-      @url = "http://onemanga.com/"
+      #@url = "http://onemanga.com/"
     end
 
     def list
-      url = @url + 'directory'
-      doc = Nokogiri::HTML(open('http://www.onemanga.com/Naruto/388/01'))
+      #url = @url + 'directory'
+      #doc = Nokogiri::HTML(open('http://www.onemanga.com/Naruto/388/01'))
       []
     end
   
-    def get id
+    def manga name
+      OMManga.new
     end
   
+  end
+
+  class OMManga < Manga
   end
   
 end

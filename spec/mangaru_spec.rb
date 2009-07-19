@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 
 require 'spec'
+require 'spec/shared_examples.rb'
 
 require 'lib/getter'
 require 'lib/manga'
@@ -12,38 +13,6 @@ require 'lib/manga'
 # doc = Nokogiri::HTML(open('http://www.onemanga.com/Naruto/388/01'))
 # doc.xpath("//select[@id='id_page_select']/option/@value").each {|i| puts i}
 # doc.xpath("//img[@class='manga-page']/@src")
-
-shared_examples_for "all getters" do
-
-  it "should have a #list method" do
-    @getter.should respond_to :list
-  end
-
-  it "should have a #manga method" do
-    @getter.should respond_to :manga
-  end
-
-  describe "@getter#list" do
-    it "should return an array of Mangaru::Manga objects" do
-      @getter.list.should be_an_instance_of Array
-      @getter.list.each { |manga| manga.should be_an_kind_of Mangaru::Manga } 
-    end
-  end
-
-end
-
-shared_examples_for "all mangas" do
-
-  it "should have a #list method" do
-    @manga.should respond_to :list
-  end
-
-  it "should have a #chapter method" do
-    @manga.should respond_to :chapter
-  end
-
-end
-
 
 describe Mangaru::Getter do
 
@@ -67,5 +36,21 @@ end
 
 
 describe Mangaru::Chapter do
+
+  before :each do
+    @chapter = Mangaru::Chapter.new
+  end
+
+  it_should_behave_like "all chapters"
+
+end
+
+describe Mangaru::Page do
+
+  before :each do
+    @page = Mangaru::Page.new
+  end
+
+  it_should_behave_like "all pages"
 
 end

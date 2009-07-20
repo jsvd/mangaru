@@ -2,6 +2,11 @@ require 'spec'
 
 shared_examples_for "all getters" do
 
+  it "should have a name passed upon creation" do
+    lambda { @getter.name }.should_not raise_error
+    @getter.name.should be_an_instance_of String
+  end
+
   it "should have a #list method that returns and array of :name, :last_chapter, :last_update" do
     @getter.should respond_to :list
     @getter.list.should be_an_instance_of Array
@@ -49,9 +54,10 @@ shared_examples_for "all pages" do
   
   it "should have a #number method" do
     @page.should respond_to :number
+    @page.number.should be_a_kind_of Numeric
   end
 
-  it "should have a #image method" do
+  it "should have an #image method" do
     @page.should respond_to :image
   end
 end

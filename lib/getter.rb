@@ -4,8 +4,10 @@ module Mangaru
 
   class Getter
 
-    def initialize
-      
+    attr :name
+
+    def initialize name = "unnamed"
+      @name = name
     end
 
     def list
